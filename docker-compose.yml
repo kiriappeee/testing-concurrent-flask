@@ -14,4 +14,6 @@ services:
       dockerfile: "Dockerfile"
     environment: 
       - FLASK_APP=app.py
+    volumes:
+      - "./src:/src"
     command: "flask run --host 0.0.0.0" 
