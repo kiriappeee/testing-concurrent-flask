@@ -3,7 +3,7 @@ services:
   revproxy:
     build:
       context: "."
-      file: "Dockerfile.nginx"
+      dockerfile: "Dockerfile.nginx"
     links:
       - "web"
     ports:
@@ -11,5 +11,7 @@ services:
   web:
     build:
       context: "."
-      file: "Dockerfile"
-    command: "FLASK_APP=app.py flask run --host 0.0.0.0" 
+      dockerfile: "Dockerfile"
+    environment: 
+      - FLASK_APP=app.py
+    command: "flask run --host 0.0.0.0" 
