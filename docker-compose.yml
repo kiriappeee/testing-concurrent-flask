@@ -1,0 +1,15 @@
+version: "2"
+services:
+  revproxy:
+    build:
+      context: "."
+      file: "Dockerfile.nginx"
+    links:
+      - "web"
+    ports:
+      - "80:80"
+  web:
+    build:
+      context: "."
+      file: "Dockerfile"
+    command: "FLASK_APP=app.py flask run --host 0.0.0.0" 
